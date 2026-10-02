@@ -27,7 +27,7 @@ def generate_product_copy(product_name: str, selling_points: str, target_audienc
 - 目标受众：{target_audience}
 """
 
-    print("🚀 正在通过通用行业协议（OpenAI标准）调用大模型...\n")
+   
 
     try:
         # 2. 调用模型（直接使用你截图里带有 1M 免费额度的代号）

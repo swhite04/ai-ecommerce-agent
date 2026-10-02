@@ -18,7 +18,7 @@ class ProductRequest(BaseModel):
 # 3. 写一个 POST 接口，暴露给前端调用
 @app.post("/generate")
 async def generate(request: ProductRequest):
-    print(f"📦 收到前端请求，正在为【{request.product_name}】生成文案...")
+    
     
     try:
         # 调用你的核心 AI 函数
