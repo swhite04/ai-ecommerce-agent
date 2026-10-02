@@ -1,6 +1,6 @@
 # 1. 告诉 Docker 使用官方的 Python 3.10 环境
 FROM python:3.11-slim
-
+ENV PYTHONIOENCODING=utf-8
 # 2. 设置工作目录
 WORKDIR /app
 
