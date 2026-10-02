@@ -1,6 +1,6 @@
 import os
 from openai import OpenAI
-
+import traceback
 # 让代码去系统的“环境变量”里找名为 ALIYUN_API_KEY 的密码
 # 这样你的真密码就只会存在于你未来的服务器后台，而不会暴露在代码里！
 client = OpenAI(
@@ -44,7 +44,8 @@ def generate_product_copy(product_name: str, selling_points: str, target_audienc
         return response.choices[0].message.content
 
     except Exception as e:
-        return f"❌ 系统异常: {str(e)}"
+        error_trace = traceback.format_exc()
+        return f"❌ 系统异常详情:\n{error_trace}"
 
 
 # ================= 快速测试 =================
