@@ -1,9 +1,11 @@
+import os
 from openai import OpenAI
 
-# 1. 初始化标准的 OpenAI 客户端，但将核心地址指向阿里云百炼
+# 让代码去系统的“环境变量”里找名为 ALIYUN_API_KEY 的密码
+# 这样你的真密码就只会存在于你未来的服务器后台，而不会暴露在代码里！
 client = OpenAI(
-    api_key="xxxx",  # ⚠️ 换成你最新生成的百炼 API Key
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"  # 阿里云的 OpenAI 兼容网关
+    api_key=os.environ.get("ALIYUN_API_KEY", "默认的假key"),  
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
 )
 
 def generate_product_copy(product_name: str, selling_points: str, target_audience: str, style: str = "小红书") -> str:
