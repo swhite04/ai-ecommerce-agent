@@ -1,10 +1,8 @@
 # 1. 告诉 Docker 使用官方的 Python 3.11 环境
 FROM python:3.11-slim
 
-# 【终极修复】强制 Python 和整个 Linux 系统全部使用 UTF-8 编码
-ENV PYTHONIOENCODING=utf-8
-ENV LANG=C.UTF-8
-ENV LC_ALL=C.UTF-8
+# 【终极修复】开启 Python 全局强制 UTF-8 模式，彻底无视系统 ASCII 限制
+ENV PYTHONUTF8=1
 
 # 2. 设置工作目录
 WORKDIR /app
