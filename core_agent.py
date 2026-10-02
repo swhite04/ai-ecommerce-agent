@@ -1,13 +1,16 @@
 import os
 from openai import OpenAI
 import traceback
-# 让代码去系统的“环境变量”里找名为 ALIYUN_API_KEY 的密码
-# 这样你的真密码就只会存在于你未来的服务器后台，而不会暴露在代码里！
+
+api_key = os.environ.get("ALIYUN_API_KEY", "").strip()
+
+if not api_key:
+    raise ValueError("环境变量 ALIYUN_API_KEY 未设置！请在 Render 控制台配置真实的 API Key。")
+
 client = OpenAI(
-    api_key=os.environ.get("ALIYUN_API_KEY", "默认的假key"),  
+    api_key=api_key,
     base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
 )
-
 def generate_product_copy(product_name: str, selling_points: str, target_audience: str, style: str = "小红书") -> str:
     system_prompt = f"""
 你是一个拥有5年爆款经验的电商金牌文案操盘手。
